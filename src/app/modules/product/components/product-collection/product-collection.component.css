@@ -1,0 +1,10 @@
+.product-collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-collection-content ul.horizontal-scroll {
+  display: flex;
+  overflow: auto;
+}

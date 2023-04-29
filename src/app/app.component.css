@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.header-section {
+  z-index: 3;
+  box-shadow: 1px 2px 1px #00000014;
+  position: relative;
+}
+
+.footer-section {
+  background-color: #f4f4f4;
+}
+
+.overlay {
+
+}

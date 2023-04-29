@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/font/stylesheet.css";
+
+html {
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Yandex Sans Text", sans-serif;
+  box-sizing: border-box;
+  margin: 0 !important;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #222;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+  color: #212121;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+router-outlet {
+  display: contents;
+}
+
+fieldset {
+  border: 0;
+}

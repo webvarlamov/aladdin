@@ -1,0 +1,8 @@
+<ng-container *ngFor="let keyValue of (productFilterRepresentations | keyvalue); trackBy: trackByKey">
+  <app-product-filters-item [productFilterRepresentation]="keyValue.value"
+                            [productFilterValue]="productFilterValues[keyValue.key]"
+                            [filterName]="keyValue.key" [id]="keyValue.key + '-product-filters-item'"
+                            (onChange)="onChangeEvent($event)"></app-product-filters-item>
+  <br>
+</ng-container>
+<button>Применить</button>

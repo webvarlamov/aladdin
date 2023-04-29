@@ -1,0 +1,17 @@
+:host {
+  height: 100%;
+}
+
+app-section {
+}
+
+app-content.category-page-content {
+  display: grid;
+  grid-template-columns: 290px 1fr 200px;
+  height: 100%;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

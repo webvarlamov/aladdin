@@ -1,0 +1,16 @@
+:host {
+  padding: 0 10px;
+}
+
+button {
+  height: 45px;
+  width: 125px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  background: #fc0;
+  border: 0;
+  border-radius: 7px;
+}
