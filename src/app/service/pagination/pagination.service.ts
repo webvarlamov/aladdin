@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {BehaviorSubject} from "rxjs";
+import {AppURLSearchParamsService} from "../app-u-r-l-search-params.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +14,20 @@ export class PaginationService {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private location: Location,
+    private appURLSearchParamsServiceService: AppURLSearchParamsService
   ) {
   }
 
   public updateByEvent(page: number) {
-    const queryParams = {
-      page
-    };
+    const queryParams = this.appURLSearchParamsServiceService.getUrlSearchParams();
+    queryParams['page'] = [page.toString()]
 
     const urlTree = this.router.createUrlTree([], {
-      relativeTo: this.route,
-      queryParams,
-      queryParamsHandling: 'merge',
+      relativeTo: this.activatedRoute,
+      queryParams: queryParams,
+      queryParamsHandling: 'merge'
     });
 
     this.location.go(urlTree.toString())

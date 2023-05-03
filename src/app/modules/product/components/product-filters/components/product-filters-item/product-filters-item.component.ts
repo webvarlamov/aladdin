@@ -25,11 +25,11 @@ export class ProductFiltersItemComponent implements OnInit {
   }
 
   public getMinPlaceholder(availableValues: number[]) {
-    return availableValues ? "от " + Math.min(...availableValues) + " ₽" : "";
+    return availableValues ? "от " + Math.min(...availableValues).toLocaleString('ru') + " ₽" : "";
   }
 
   public getMaxPlaceholder(availableValues: number[]) {
-    return availableValues ? "до " + Math.max(...availableValues) + " ₽" : "";
+    return availableValues ? "до " + Math.max(...availableValues).toLocaleString('ru') + " ₽" : "";
   }
 
   public onSingleSelectChange(value: boolean, productFilterRepresentation: ProductFilterRepresentation, target: any) {
@@ -37,7 +37,7 @@ export class ProductFiltersItemComponent implements OnInit {
       filterName: this.filterName,
       filterType: productFilterRepresentation.type,
       singleSelectPayload: {
-        targetId: target[productFilterRepresentation.idField],
+        targetId: target?.[productFilterRepresentation.idField],
         idField: productFilterRepresentation.idField,
         radiobuttonValue: value,
       }

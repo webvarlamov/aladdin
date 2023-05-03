@@ -4,6 +4,7 @@ import {Location} from "@angular/common";
 import {ProductFilterItemValueChangeEvent} from "../../modules/product/models/product-filter-item-value-change-event";
 import {Type} from "../../models/product-page";
 import {BehaviorSubject} from "rxjs";
+import {AppURLSearchParamsService} from "../app-u-r-l-search-params.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ProductFilterValuesService {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location,
+    private appURLSearchParamsService: AppURLSearchParamsService
   ) {
   }
 
@@ -48,12 +50,15 @@ export class ProductFilterValuesService {
     }
 
     if(event.filterType == Type.SINGLE_SELECT) {
-      productFiltersValues[event.filterName] = event.singleSelectPayload.targetId
+      if (event.singleSelectPayload.targetId == null) {
+        delete productFiltersValues[event.filterName]
+      } else {
+        productFiltersValues[event.filterName] = event.singleSelectPayload.targetId
+      }
     }
 
-    const queryParams = {
-      filter: btoa(JSON.stringify(productFiltersValues))
-    };
+    const queryParams = this.appURLSearchParamsService.getUrlSearchParams();
+    queryParams['filter'] = [btoa(JSON.stringify(productFiltersValues))]
 
     const urlTree = this.router.createUrlTree([], {
       relativeTo: this.route,

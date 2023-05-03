@@ -10,17 +10,17 @@ div.product-filters-item-values-wrapper.entity {
 
 div.product-filters-item-values-wrapper.numeric {
   display: grid;
-  grid-template-columns: 130px 130px;
   grid-gap: 10px;
 }
 
-div.product-filters-item-values-wrapper.numeric input {
+div.product-filters-item-values-wrapper.numeric input[type=number] {
   display: block;
   box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 10px 12px 10px 30px;
   border-radius: 5px;
+  border: 3px solid var(--accent-color);
 }
 
 label.product-filters-item-value {
@@ -54,26 +54,15 @@ label.product-filter-item-name {
 }
 
 label.product-filters-item-value input[type=checkbox] {
+  margin: 3px 10px 3px 8px;
+  transform: scale(1.2) translate(0px, 0px);
 }
 
-label.product-filters-item-value input[type=checkbox]::after, label.product-filters-item-value input[type=radio]::after {
-  content: "";
-  display: block;
-  height: 10px;
-  width: 10px;
-  border-style: solid;
-  background-color: #fff;
-  border-color: #ccc;
-  border-width: 2px;
-  border-radius: 2px;
-  transform: scale(1);
+label.product-filters-item-value span {
+  margin-top: 1px;
 }
 
-label.product-filters-item-value input[type=checkbox]:checked::after {
-  border-color: #fc0;
-  background-color: black;
-}
-
-input.checkbox-input {
-  margin-right: 7px;
+label.product-filters-item-value input[type=radio] {
+  margin: 3px 10px 3px 8px;
+  transform: scale(1.2) translate(0px, 0px);
 }

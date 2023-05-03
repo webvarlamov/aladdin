@@ -17,7 +17,7 @@
       <div class="product-filters-item-values-wrapper entity">
         <ng-container *ngFor="let availableValue of productFilterRepresentation?.availableValues; trackBy: trackById.bind(this, productFilterRepresentation.idField)">
           <label class="product-filters-item-value">
-            {{availableValue.name}}
+            <span>{{availableValue.name}}</span>
             <input #checkbox type="checkbox" [checked]="productFilterValue?.includes(availableValue[productFilterRepresentation.idField])" class="checkbox-input" (change)="onMultySelectChange(checkbox.checked, productFilterRepresentation, availableValue)">
           </label>
         </ng-container>
@@ -26,9 +26,13 @@
 
     <ng-container *ngSwitchCase="'SINGLE_SELECT'">
       <div class="product-filters-item-values-wrapper entity">
+        <label class="product-filters-item-value">
+          <span>Не важно</span>
+          <input #checkbox type="radio" [checked]="productFilterValue == null" [name]="productFilterRepresentation.label" class="checkbox-input" (change)="onSingleSelectChange(checkbox.checked, productFilterRepresentation, null)">
+        </label>
         <ng-container *ngFor="let availableValue of productFilterRepresentation?.availableValues;">
           <label class="product-filters-item-value">
-            {{availableValue.name}}
+            <span>{{availableValue.name}}</span>
             <input #checkbox type="radio" [checked]="productFilterValue == availableValue[productFilterRepresentation.idField]" [name]="productFilterRepresentation.label" class="checkbox-input" (change)="onSingleSelectChange(checkbox.checked, productFilterRepresentation, availableValue)">
           </label>
         </ng-container>

@@ -11,6 +11,7 @@
                            (onChange)="onFilterChangeEvent($event)"></app-product-filters>
     </div>
     <div class="content">
+      {{categoryPageService.$productFiltersValues | async | json}}
       <app-pagination [userShowMore]="false"
                       [totalPages]="paginationService.totalPages | async"
                       [currentPage]="paginationService.getCurrentPage()"
