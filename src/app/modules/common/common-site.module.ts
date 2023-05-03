@@ -1,24 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ContentComponent } from './components/content/content.component';
-import { SectionComponent } from './components/section/section.component';
-import { AccentButtonComponent } from './components/accent-button/accent-button.component';
-
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ContentComponent} from './components/content/content.component';
+import {SectionComponent} from './components/section/section.component';
+import {AccentButtonComponent} from './components/accent-button/accent-button.component';
+import {PaginationComponent} from "../catalog/components/pagination/pagination.component";
 
 @NgModule({
-    declarations: [
-        ContentComponent,
-        SectionComponent,
-        AccentButtonComponent
-    ],
+  declarations: [
+    ContentComponent,
+    SectionComponent,
+    AccentButtonComponent,
+    PaginationComponent
+  ],
   exports: [
     ContentComponent,
     SectionComponent,
-    AccentButtonComponent
+    AccentButtonComponent,
+    PaginationComponent
   ],
-    imports: [
-        CommonModule
-    ]
+  imports: [
+    CommonModule
+  ]
 })
-export class CommonSiteModule { }
+export class CommonSiteModule {
+}

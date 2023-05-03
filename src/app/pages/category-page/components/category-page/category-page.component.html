@@ -10,12 +10,15 @@
                            [productFilterRepresentations]="(categoryPageService.$productFiltersRepresentations | async)"
                            (onChange)="onFilterChangeEvent($event)"></app-product-filters>
     </div>
-    <div class="products-grid">
-      <ng-container *ngFor="let product of (categoryPageService.$products | async)">
-        <div class="product-grid-item-wrapper">
-          <app-product-grid-item [product]="product"></app-product-grid-item>
-        </div>
-      </ng-container>
+    <div class="content">
+      <div class="products-grid">
+        <ng-container *ngFor="let product of (categoryPageService.$products | async)">
+          <div class="product-grid-item-wrapper">
+            <app-product-grid-item [product]="product"></app-product-grid-item>
+          </div>
+        </ng-container>
+      </div>
+      <app-pagination [totalPages]="10" [currentPage]="100"></app-pagination>
     </div>
     <div class="right-sidebar">
       2

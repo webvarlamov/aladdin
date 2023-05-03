@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ProductFilterRepresentation, ProductFiltersRepresentations} from "../../../../models/product-page";
+import {ProductFiltersRepresentations} from "../../../../models/product-page";
 import {ProductFilterItemValueChangeEvent} from "../../models/product-filter-item-value-change-event";
 import {ProductFiltersValues} from "../../../../service/storage/product-filter-values.service";
 

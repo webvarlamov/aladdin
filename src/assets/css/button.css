@@ -1,0 +1,42 @@
+button.app-button {
+  pointer-events: auto;
+  list-style: none;
+  white-space: nowrap;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font: inherit;
+  border: solid transparent;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0;
+  border-radius: 7px;
+  transition: all .12s ease-out;
+  height: 40px;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--no-accent-color)
+}
+
+button.app-button:hover {
+  background-color: var(--no-accent-color-hover)
+}
+
+button.app-button.accent-button {
+  background-color: var(--accent-color)
+}
+
+button.app-button.accent-button:hover {
+  background-color: var(--accent-color-hover)
+}
+
+button.app-button.transparent-button {
+  background-color: var(--transparent-color)
+}
+
+button.app-button.transparent-button:hover {
+  background-color: var(--transparent-color-hover)
+}

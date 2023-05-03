@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CatalogComponent } from './components/catalog/catalog.component';
+import { CatalogComponent } from '../common/catalog/catalog.component';
 import { CategoriesItemComponent } from './components/categories-item/categories-item.component';
-
-
 
 @NgModule({
     declarations: [
         CatalogComponent,
-        CategoriesItemComponent
+        CategoriesItemComponent,
     ],
     exports: [
         CatalogComponent

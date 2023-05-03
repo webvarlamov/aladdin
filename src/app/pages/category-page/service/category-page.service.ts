@@ -51,7 +51,7 @@ export class CategoryPageService {
         const urlFilterParam: number | any = urlFilterParams[filterName];
         filterExpression.ranges.push(new Range({
           property: filterName,
-          operator: RangeOperator.IN,
+          operator: RangeOperator.ISMEMBER,
           value1: urlFilterParam
         }))
       } else if (type == Type.MULTI_SELECT) {

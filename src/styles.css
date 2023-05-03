@@ -1,4 +1,6 @@
-@import "assets/font/stylesheet.css";
+@import "assets/font/font.css";
+@import "assets/css/button.css";
+@import "assets/css/variables.css";
 
 html {
   height: 100%;

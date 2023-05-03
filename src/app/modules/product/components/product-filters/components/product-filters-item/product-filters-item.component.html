@@ -1,4 +1,8 @@
 <fieldset>
+  <div style="display: none">
+    {{productFilterValue | json}} of
+    {{productFilterRepresentation?.availableValues | json}}
+  </div>
   <legend class="product-filter-item-name">{{productFilterRepresentation?.label}}</legend>
   <ng-container [ngSwitch]="productFilterRepresentation.type">
 
@@ -25,7 +29,7 @@
         <ng-container *ngFor="let availableValue of productFilterRepresentation?.availableValues;">
           <label class="product-filters-item-value">
             {{availableValue.name}}
-            <input #checkbox type="radio" [checked]="productFilterValue?.includes(availableValue[productFilterRepresentation.idField])" [name]="productFilterRepresentation.label" class="checkbox-input" (change)="onSingleSelectChange(checkbox.checked, productFilterRepresentation, availableValue)">
+            <input #checkbox type="radio" [checked]="productFilterValue == availableValue[productFilterRepresentation.idField]" [name]="productFilterRepresentation.label" class="checkbox-input" (change)="onSingleSelectChange(checkbox.checked, productFilterRepresentation, availableValue)">
           </label>
         </ng-container>
       </div>
@@ -33,4 +37,3 @@
 
   </ng-container>
 </fieldset>
-{{productFilterValue}}
