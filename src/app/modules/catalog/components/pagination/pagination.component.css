@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  margin: 20px 0;
+}
+
+div.pages-buttons-wrapper {
+  display: flex;
+}
+
+button.active-page-button {
+  border: 2px solid var(--accent-color);
+}

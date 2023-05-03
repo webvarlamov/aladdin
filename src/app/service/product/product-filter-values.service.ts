@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {ProductFilterItemValueChangeEvent} from "../../modules/product/models/product-filter-item-value-change-event";
 import {Type} from "../../models/product-page";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

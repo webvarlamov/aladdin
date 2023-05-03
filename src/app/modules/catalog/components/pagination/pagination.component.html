@@ -1,0 +1,27 @@
+<ng-container *ngIf="userShowMore">
+  <div class="show-more-button-wrapper">
+    <button class="app-button">Показать ещё</button>
+  </div>
+  <br>
+</ng-container>
+<ng-container *ngIf="usePagination">
+  <div class="pages-buttons-wrapper">
+    <button class="app-button transparent-button"
+            (click)="onPrevPageClick()"
+            [disabled]="currentPage <= 0"
+    >
+      Назад
+    </button>
+    <ng-container *ngFor="let page of getPagesButtons()">
+      <button class="app-button transparent-button {{page.isActive ? 'active-page-button' : ''}}"
+              (click)="onPageClick(page)"
+      >{{page.label}}</button>
+    </ng-container>
+    <button class="app-button transparent-button"
+            (click)="onNextPageClick()"
+            [disabled]="currentPage >= totalPages - 1"
+    >
+      Вперёд
+    </button>
+  </div>
+</ng-container>

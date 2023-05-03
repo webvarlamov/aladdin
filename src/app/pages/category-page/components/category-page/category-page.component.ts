@@ -2,8 +2,9 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {CategoryPageService} from "../../service/category-page.service";
 import {
   ProductFilterValuesService,
-} from "../../../../service/storage/product-filter-values.service";
+} from "../../../../service/product/product-filter-values.service";
 import {ProductFilterItemValueChangeEvent} from "../../../../modules/product/models/product-filter-item-value-change-event";
+import {PaginationService} from "../../../../service/pagination/pagination.service";
 
 @Component({
   selector: 'app-category-page',
@@ -16,7 +17,8 @@ export class CategoryPageComponent implements OnInit {
 
   constructor(
     public categoryPageService: CategoryPageService,
-    private productFilterValuesService: ProductFilterValuesService
+    public productFilterValuesService: ProductFilterValuesService,
+    public paginationService: PaginationService
   ) {
   }
 
@@ -24,13 +26,26 @@ export class CategoryPageComponent implements OnInit {
     this.categoryPageService.loadAnSetProductFiltersRepresentations().then(ok => {
       const productFilterValues = this.productFilterValuesService.getFilterValues();
       this.categoryPageService.updateProductFilterValues(productFilterValues);
-      this.categoryPageService.loadProductPageByFilterParams(productFilterValues);
+      this.categoryPageService.loadAnSetProductPage(productFilterValues, this.paginationService.getCurrentPage()).then(productPage => {
+        this.paginationService.setTotals(productPage.totalPages, productPage.totalElements)
+      });
     })
   }
 
   public onFilterChangeEvent(event: ProductFilterItemValueChangeEvent) {
+    this.paginationService.updateByEvent(0);
     const productFilterValues = this.productFilterValuesService.updateByEvent(event);
     this.categoryPageService.updateProductFilterValues(productFilterValues)
-    this.categoryPageService.loadProductPageByFilterParams(productFilterValues);
+    this.categoryPageService.loadAnSetProductPage(productFilterValues, this.paginationService.getCurrentPage()).then(productPage => {
+      this.paginationService.setTotals(productPage.totalPages, productPage.totalElements)
+    });
+  }
+
+  public onChangePageEvent(requestedPage: number) {
+    this.paginationService.updateByEvent(requestedPage);
+    const filterValues = this.productFilterValuesService.getFilterValues();
+    this.categoryPageService.loadAnSetProductPage(filterValues, requestedPage).then(productPage => {
+      this.paginationService.setTotals(productPage.totalPages, productPage.totalElements)
+    });
   }
 }

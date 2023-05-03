@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductFilterItemValueChangeEvent} from "../../../../models/product-filter-item-value-change-event";
 import {ProductFilterRepresentation} from "../../../../../../models/product-page";
-import {ProductFiltersValues} from "../../../../../../service/storage/product-filter-values.service";
+import {ProductFiltersValues} from "../../../../../../service/product/product-filter-values.service";
 
 @Component({
   selector: 'app-product-filters-item',

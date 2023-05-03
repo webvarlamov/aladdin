@@ -5,8 +5,9 @@ import {ProductPageRequest} from "../../../models/product-page-request";
 import {FilterExpression, FilterExpressionOperator} from "../../../service/http/model/filter-expression";
 import {Range} from "../../../service/http/model/range";
 import {RangeOperator} from "../../../service/http/model/range-operator.enum";
-import {ProductFiltersRepresentations, Type} from "../../../models/product-page";
-import {ProductFiltersValues} from "../../../service/storage/product-filter-values.service";
+import {ProductFiltersRepresentations, ProductPage, Type} from "../../../models/product-page";
+import {ProductFiltersValues} from "../../../service/product/product-filter-values.service";
+import {Page} from "../../../service/http/model/page";
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +28,15 @@ export class CategoryPageService {
     })
   }
 
-  public loadProductPageByFilterParams(urlFilterParams: ProductFiltersValues) {
+  public loadAnSetProductPage(urlFilterParams: ProductFiltersValues, page: number): Promise<ProductPage> {
     const productPageRequest = new ProductPageRequest();
+    productPageRequest.page = new Page({page});
     productPageRequest.filterExpression = this.buildFilterExpression(urlFilterParams, this.$productFiltersRepresentations.getValue());
-    firstValueFrom(this.httpClientService.getProductPage(productPageRequest))
+    return firstValueFrom(this.httpClientService.getProductPage(productPageRequest))
       .then(productPage => {
         this.$productFiltersRepresentations.next(productPage.productFilterRepresentations);
         this.$products.next(productPage.products);
+        return productPage;
       });
   }
 

@@ -23,6 +23,8 @@ export class HttpClientService {
       params.append('filterExpression', JSON.stringify(productPageRequest.filterExpression)) :
       params;
 
+    params = params.append("page", productPageRequest.page.page)
+
     return this.http.get("/api/products/get_page", {params}) as Observable<ProductPage>
   }
 

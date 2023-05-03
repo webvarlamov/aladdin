@@ -2,7 +2,9 @@ export interface ProductPage {
   products: any[],
   productFilterRepresentations: ProductFiltersRepresentations,
   pageable: any,
-  sort: any
+  sort: any,
+  totalElements: number;
+  totalPages: number;
 }
 
 export interface ProductFiltersRepresentations {

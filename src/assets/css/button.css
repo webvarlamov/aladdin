@@ -16,7 +16,6 @@ button.app-button {
   transition: all .12s ease-out;
   height: 40px;
   padding: 0 16px;
-  width: 100%;
   box-sizing: border-box;
   background-color: var(--no-accent-color)
 }
