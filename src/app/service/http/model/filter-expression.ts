@@ -4,7 +4,6 @@ export class FilterExpression {
   public expressions?: FilterExpression[];
   public operator?: FilterExpressionOperator;
   public ranges?: Range[];
-  public exclude?: boolean;
 
   constructor(params: FilterExpressionInterface) {
     this.operator = params.operator;

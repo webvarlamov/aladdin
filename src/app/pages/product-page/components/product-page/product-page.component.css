@@ -1,0 +1,8 @@
+:host {
+  flex-grow: 1;
+}
+
+.product-page-main-content {
+  display: flex;
+}
+

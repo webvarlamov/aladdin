@@ -3,6 +3,7 @@
   flex-direction: column;
   box-sizing: border-box;
   justify-content: space-between;
+  min-height: 100%;
 }
 
 .header-section {
@@ -13,8 +14,4 @@
 
 .footer-section {
   background-color: #f4f4f4;
-}
-
-.overlay {
-
 }

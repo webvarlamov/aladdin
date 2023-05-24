@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ContentComponent} from './components/content/content.component';
 import {SectionComponent} from './components/section/section.component';
 import {AccentButtonComponent} from './components/accent-button/accent-button.component';
-import {PaginationComponent} from "../catalog/components/pagination/pagination.component";
+import {PaginationComponent} from "./pagination/pagination.component";
 
 @NgModule({
   declarations: [

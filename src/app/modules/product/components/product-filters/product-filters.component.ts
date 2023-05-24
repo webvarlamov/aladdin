@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ProductFiltersRepresentations} from "../../../../models/product-page";
+import {ProductFilterRepresentation, ProductFiltersRepresentations} from "../../../../models/product-list-page";
 import {ProductFilterItemValueChangeEvent} from "../../models/product-filter-item-value-change-event";
 import {ProductFiltersValues} from "../../../../service/product/product-filter-values.service";
 
@@ -28,5 +28,9 @@ export class ProductFiltersComponent implements OnInit {
 
   public trackByKey(index: number, item: any): string {
     return item.key;
+  }
+
+  sort(keyvalues: {key: string, value: ProductFilterRepresentation}[]): {key: string, value: ProductFilterRepresentation}[] {
+    return keyvalues.sort((a, b) => a.value.order - b.value.order)
   }
 }

@@ -1,0 +1,19 @@
+<ng-container *ngIf="price && price > 0">
+  <span class="price">
+    {{(discount > 0 ? price - (price * discount) : price).toLocaleString("ru")}}
+      <span class="currency">₽</span>
+  </span>
+
+  <span class="price-without-discount">
+  {{(discount < 0 ? price - (price * discount) : price).toLocaleString("ru")}}
+    <span class="currency">₽</span>
+  </span>
+
+  <span class="discount">
+  -{{abs(discount * 100)}}
+    <span class="currency">%</span>
+  </span>
+</ng-container>
+<ng-container *ngIf="!price || price <= 0">
+  <span class="price-undefined">Уточняем цену</span>
+</ng-container>

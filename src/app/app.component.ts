@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {HttpClientService} from "./service/http/http-client.service";
-import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +6,6 @@ import {firstValueFrom} from "rxjs";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'aladdin';
-
-  constructor(private httpClientService: HttpClientService) {
-  }
+  public title: string = 'aladdin';
+  public showCatalog: boolean = false;
 }

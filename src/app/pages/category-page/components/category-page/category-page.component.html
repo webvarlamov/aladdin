@@ -11,16 +11,23 @@
                            (onChange)="onFilterChangeEvent($event)"></app-product-filters>
     </div>
     <div class="content">
-      {{categoryPageService.$productFiltersValues | async | json}}
       <app-pagination [userShowMore]="false"
                       [totalPages]="paginationService.totalPages | async"
                       [currentPage]="paginationService.getCurrentPage()"
                       (onChangePageEvent)="onChangePageEvent($event)"
+                      style="margin-left: -20px;"
       ></app-pagination>
+      <app-product-filter-tags [productFilterValues]="categoryPageService.$productFiltersValues | async"
+                               [productFilterRepresentations]="(categoryPageService.$productFiltersRepresentations | async)"
+      ></app-product-filter-tags>
       <div class="products-grid">
         <ng-container *ngFor="let product of (categoryPageService.$products | async)">
           <div class="product-grid-item-wrapper">
-            <app-product-grid-item [product]="product"></app-product-grid-item>
+            <app-product-item
+              [product]="product"
+              [isFavorite]="favouritesProductsService.isFavorite(product.id)"
+              (favoriteButtonClickEvent)="onFavoriteButtonClickEvent($event, product.id)"
+            ></app-product-item>
           </div>
         </ng-container>
       </div>
@@ -28,10 +35,11 @@
                       [totalPages]="paginationService.totalPages | async"
                       [currentPage]="paginationService.getCurrentPage()"
                       (onChangePageEvent)="onChangePageEvent($event)"
+                      style="margin-left: -20px;"
       ></app-pagination>
     </div>
     <div class="right-sidebar">
-      2
+      <div class="sidebar-content-mock"></div>
     </div>
   </app-content>
 </app-section>

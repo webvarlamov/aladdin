@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+div.rating-stars {
+  height: 18px;
+  background-image: url("src/assets/img/rating-star.svg");
+  width: 90px;
+  position: absolute;
+}
+
+div.rating-stars-accent {
+  height: 18px;
+  background-image: url("src/assets/img/rating-star-accent.svg");
+  width: 0;
+  position: absolute;
+}
+
+div.rating-value {
+  position: relative;
+  top: 2px;
+  left: 100px;
+  color: var(--basic-text-color);
+}

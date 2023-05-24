@@ -9,9 +9,17 @@ app-content.category-page-content {
   display: grid;
   grid-template-columns: 290px 1fr 200px;
   height: 100%;
+  grid-gap: 10px;
 }
 
-.products-grid {
+div.products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  border-radius: 7px;
+}
+
+div.sidebar-content-mock {
+  height: 600px;
+  background-color: aliceblue;
+  border-radius: 7px;
 }

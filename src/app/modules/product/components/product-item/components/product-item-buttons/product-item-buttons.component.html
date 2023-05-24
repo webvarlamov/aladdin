@@ -1,0 +1,9 @@
+<button class="app-button accent-button" title="Добавить в корзину">В корзину</button>
+<button class="app-button" title="Просмотр во всплывающем окне">Просмотр</button>
+<button
+  class="app-button"
+  title="Добавить в избранное"
+  [ngClass]="{'favourite': isFavourite}"
+  (click)="onFavoriteButtonClick()"
+>❤️
+</button>

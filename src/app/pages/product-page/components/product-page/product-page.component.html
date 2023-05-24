@@ -1,1 +1,17 @@
-<p>product-page works!</p>
+<ng-container *ngIf="(productPageService.$product | async) as product">
+  <app-section>
+    <app-content class="product-page-header">
+      <h1>{{product.description.name}}</h1>
+    </app-content>
+  </app-section>
+  <app-section>
+    <app-content class="product-page-content">
+      <div class="product-page-main-content">
+        <app-product-images [images]="getImages(product)" style="max-height: 640px"></app-product-images>
+        <app-product-description></app-product-description>
+        <app-product-offer></app-product-offer>
+      </div>
+    </app-content>
+  </app-section>
+</ng-container>
+

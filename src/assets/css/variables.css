@@ -1,8 +1,11 @@
 :root {
-  --no-accent-color: #efefef;
+  --no-accent-color: #f1f1f1;
   --no-accent-color-hover: #e1e1e1;
   --accent-color: #ffcc00;
   --accent-color-hover: #efbd00;
   --transparent-color: rgba(0, 0, 0, 0);
   --transparent-color-hover: rgba(0, 0, 0, 0);
+  --basic-text-color: #222;
+  --light-text-color: #3a3a3a;
+  --price-without-discount-color: #9d2b05;
 }

@@ -1,0 +1,10 @@
+<div class="product-images-viewport">
+  <ng-container *ngIf="getViewportImage() as viewportImage">
+    <img [src]="'/api/images/A/' + viewportImage.image">
+  </ng-container>
+</div>
+<div class="product-images-selectors" (mouseleave)="onImageSelectorMouseLeave()">
+  <ng-container *ngFor="let productImage of productImages">
+    <div class="product-image-selector" (mouseenter)="onImageSelectorMouseEnter(productImage)"></div>
+  </ng-container>
+</div>

@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px;
+  overflow: hidden;
+}
+
+div.flex-spacer {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+a.product-link {
+  text-decoration: none;
+  color: var(--basic-text-color);
+}

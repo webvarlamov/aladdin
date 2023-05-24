@@ -9,7 +9,6 @@ export interface RangeInterface {
 }
 
 export class Range {
-  exclude: boolean = false;
   operator: RangeOperator;
   property: string;
   value1?: any;

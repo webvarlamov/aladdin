@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {HttpClientService} from "../../../service/http/http-client.service";
-import {ProductPageRequest} from "../../../models/product-page-request";
+import {ProductListPageRequest} from "../../../models/product-list-page-request";
 import {FilterExpression, FilterExpressionOperator} from "../../../service/http/model/filter-expression";
 import {Range} from "../../../service/http/model/range";
 import {RangeOperator} from "../../../service/http/model/range-operator.enum";
-import {ProductFiltersRepresentations, ProductPage, Type} from "../../../models/product-page";
+import {ProductFiltersRepresentations, ProductListPage, Type} from "../../../models/product-list-page";
 import {ProductFiltersValues} from "../../../service/product/product-filter-values.service";
 import {Page} from "../../../service/http/model/page";
 
@@ -28,11 +28,12 @@ export class CategoryPageService {
     })
   }
 
-  public loadAnSetProductPage(urlFilterParams: ProductFiltersValues, page: number): Promise<ProductPage> {
-    const productPageRequest = new ProductPageRequest();
-    productPageRequest.page = new Page({page});
-    productPageRequest.filterExpression = this.buildFilterExpression(urlFilterParams, this.$productFiltersRepresentations.getValue());
-    return firstValueFrom(this.httpClientService.getProductPage(productPageRequest))
+  public loadAnSetProductListPage(urlFilterParams: ProductFiltersValues, page: number, categoryPath: string): Promise<ProductListPage> {
+    const productListPageRequest = new ProductListPageRequest();
+    productListPageRequest.page = new Page({page});
+    productListPageRequest.filterExpression = this.buildFilterExpression(urlFilterParams, this.$productFiltersRepresentations.getValue());
+    productListPageRequest.categoryPath = categoryPath;
+    return firstValueFrom(this.httpClientService.getProductListPage(productListPageRequest))
       .then(productPage => {
         this.$productFiltersRepresentations.next(productPage.productFilterRepresentations);
         this.$products.next(productPage.products);

@@ -1,0 +1,9 @@
+:host {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 5px;
+}
+
+button.favourite {
+  background-color: #ff2830;
+}

@@ -1,0 +1,9 @@
+<app-product-item-images [productImages]="product.images.slice(0, 3)" [mainProductImage]="product.image"></app-product-item-images>
+<a [routerLink]="'/product'" [queryParams]="{productId: product.id}" class="product-link">
+  <app-product-item-description [title]="product?.description?.name"></app-product-item-description>
+</a>
+<div class="flex-spacer"></div>
+<app-product-item-stars [rating]="3.5"></app-product-item-stars>
+<app-product-item-price [price]="product.price" [discount]="-0.1"></app-product-item-price>
+<app-product-item-delivery></app-product-item-delivery>
+<app-product-item-buttons (favoriteButtonClickEvent)="onFavoriteButtonClickEvent($event)" [isFavourite]="isFavorite"></app-product-item-buttons>

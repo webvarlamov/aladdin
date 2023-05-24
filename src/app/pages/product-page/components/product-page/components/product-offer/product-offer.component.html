@@ -1,0 +1,4 @@
+<ng-container *ngIf="(productPageService.$product | async) as product">
+  <h2>{{product.price.toLocaleString("ru")}} ₽</h2>
+  <button class="app-button accent-button">Добавить в корзину</button>
+</ng-container>

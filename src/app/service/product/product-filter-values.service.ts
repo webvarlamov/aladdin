@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Location} from "@angular/common";
 import {ProductFilterItemValueChangeEvent} from "../../modules/product/models/product-filter-item-value-change-event";
-import {Type} from "../../models/product-page";
+import {Type} from "../../models/product-list-page";
 import {BehaviorSubject} from "rxjs";
 import {AppURLSearchParamsService} from "../app-u-r-l-search-params.service";
 
@@ -69,6 +69,23 @@ export class ProductFilterValuesService {
     this.location.go(urlTree.toString());
 
     return productFiltersValues;
+  }
+
+  public setFilterValues(productFiltersValues: ProductFiltersValues): void {
+    const queryParams = this.appURLSearchParamsService.getUrlSearchParams();
+    if (productFiltersValues == null) {
+      delete queryParams['filter']
+    } else {
+      queryParams['filter'] = [btoa(JSON.stringify(productFiltersValues))]
+    }
+
+    const urlTree = this.router.createUrlTree([], {
+      relativeTo: this.route,
+      queryParams,
+      queryParamsHandling: 'merge',
+    });
+
+    this.location.go(urlTree.toString());
   }
 
   public getFilterValues(): ProductFiltersValues {

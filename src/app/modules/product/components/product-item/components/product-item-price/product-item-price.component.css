@@ -1,0 +1,30 @@
+:host {
+  padding: 10px 0;
+  display: grid;
+  min-height: 65px;
+}
+
+span.price {
+  font-size: 1.3em;
+}
+
+span.price-without-discount {
+  font-size: 0.8em;
+  color: var(--price-without-discount-color);
+  text-decoration: line-through;
+}
+
+span.discount {
+  width: fit-content;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 3px 5px;
+  background-color: red;
+  border-radius: 3px;
+  color: white;
+  font-size: 0.7em;
+}
+
+span.price-undefined {
+  color: var(--light-text-color);
+}

@@ -1,0 +1,11 @@
+<div class="images-preview">
+  <ng-container *ngFor="let image of images">
+    <img [src]="image?.previewURL"
+         [ngClass]="{'selectedImage': image?.previewURL == selectedImage?.previewURL}"
+         (click)="selectedImage = image"
+    />
+  </ng-container>
+</div>
+<div class="image-view">
+    <img [src]="getSelectedImage()?.fullViewURL">
+</div>

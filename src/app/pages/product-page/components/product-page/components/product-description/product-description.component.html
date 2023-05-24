@@ -1,0 +1,36 @@
+<ng-container *ngIf="(productPageService.$product | async) as product">
+  <h3>Описание товара:</h3>
+  <table class="product-description-table">
+    <tbody>
+      <tr>
+        <td>Модель</td>
+        <td>{{product.model}}</td>
+      </tr>
+      <tr>
+        <td>Количество</td>
+        <td>{{product.quantity}}</td>
+      </tr>
+      <tr>
+        <td>Высота</td>
+        <td>{{product.height}}</td>
+      </tr>
+      <tr>
+        <td>Ширина</td>
+        <td>{{product.width}}</td>
+      </tr>
+      <tr>
+        <td>Длинна</td>
+        <td>{{product.length}}</td>
+      </tr>
+      <tr>
+        <td>Вес</td>
+        <td>{{product.weight}}</td>
+      </tr>
+      <tr>
+        <td>Количество просмотров</td>
+        <td>{{product.viewed}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+

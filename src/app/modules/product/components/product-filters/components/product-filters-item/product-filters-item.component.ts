@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductFilterItemValueChangeEvent} from "../../../../models/product-filter-item-value-change-event";
-import {ProductFilterRepresentation} from "../../../../../../models/product-page";
+import {ProductFilterRepresentation} from "../../../../../../models/product-list-page";
 import {ProductFiltersValues} from "../../../../../../service/product/product-filter-values.service";
 
 @Component({
@@ -24,12 +24,12 @@ export class ProductFiltersItemComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public getMinPlaceholder(availableValues: number[]) {
-    return availableValues ? "от " + Math.min(...availableValues).toLocaleString('ru') + " ₽" : "";
+  public getMinPlaceholder(availableValues: number[], unit: string) {
+    return availableValues ? "от " + Math.min(...availableValues).toLocaleString('ru') + (unit ? " " + unit : ""): "от";
   }
 
-  public getMaxPlaceholder(availableValues: number[]) {
-    return availableValues ? "до " + Math.max(...availableValues).toLocaleString('ru') + " ₽" : "";
+  public getMaxPlaceholder(availableValues: number[], unit: string) {
+    return availableValues ? "до " + Math.max(...availableValues).toLocaleString('ru') + (unit ? " " + unit : ""): "до";
   }
 
   public onSingleSelectChange(value: boolean, productFilterRepresentation: ProductFilterRepresentation, target: any) {

@@ -1,6 +1,11 @@
+fieldset {
+  padding: 0;
+}
+
 div.product-filters-item-values-wrapper {
-  max-height: 250px;
+  max-height: 350px;
   overflow: auto;
+  margin-top: 15px;
 }
 
 div.product-filters-item-values-wrapper.entity {
@@ -11,16 +16,15 @@ div.product-filters-item-values-wrapper.entity {
 div.product-filters-item-values-wrapper.numeric {
   display: grid;
   grid-gap: 10px;
+  grid-template-columns: 140px 140px;
 }
 
 div.product-filters-item-values-wrapper.numeric input[type=number] {
   display: block;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 10px 12px 10px 30px;
-  border-radius: 5px;
-  border: 3px solid var(--accent-color);
+  /*height: 40px;*/
+  padding: 12px 12px;
+  border: 2px solid var(--no-accent-color);
+  border-radius: 7px;
 }
 
 label.product-filters-item-value {

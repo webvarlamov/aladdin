@@ -1,8 +1,12 @@
 <app-section class="header-section">
   <app-content>
     <br>
-    <app-header></app-header>
-    <app-catalog *ngIf="false"></app-catalog>
+    <app-header (onCatalogButtonClickEvent)="showCatalog = !showCatalog"></app-header>
+  </app-content>
+</app-section>
+<app-section class="catalog-section" *ngIf="showCatalog || true">
+  <app-content>
+    <app-catalog></app-catalog>
   </app-content>
 </app-section>
 <router-outlet></router-outlet>

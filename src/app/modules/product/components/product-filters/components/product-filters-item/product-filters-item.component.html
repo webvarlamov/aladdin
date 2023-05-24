@@ -3,13 +3,13 @@
     {{productFilterValue | json}} of
     {{productFilterRepresentation?.availableValues | json}}
   </div>
-  <legend class="product-filter-item-name">{{productFilterRepresentation?.label}}</legend>
+  <legend class="product-filter-item-name">{{productFilterRepresentation?.label}} {{productFilterRepresentation?.unit ? '(' + productFilterRepresentation?.unit + ')' : ''}}</legend>
   <ng-container [ngSwitch]="productFilterRepresentation.type">
 
     <ng-container *ngSwitchCase="'RANGE'">
       <div class="product-filters-item-values-wrapper numeric">
-        <input #min type="number" [value]="productFilterValue?.min" [placeholder]="getMinPlaceholder(productFilterRepresentation?.availableValues)" (change)="onRangeChange(min.value, max.value, productFilterRepresentation)">
-        <input #max type="number" [value]="productFilterValue?.max" [placeholder]="getMaxPlaceholder(productFilterRepresentation?.availableValues)" (change)="onRangeChange(min.value, max.value, productFilterRepresentation)">
+        <input #min type="number" [value]="productFilterValue?.min" [placeholder]="getMinPlaceholder(productFilterRepresentation?.availableValues, productFilterRepresentation?.unit)" (change)="onRangeChange(min.value, max.value, productFilterRepresentation)">
+        <input #max type="number" [value]="productFilterValue?.max" [placeholder]="getMaxPlaceholder(productFilterRepresentation?.availableValues, productFilterRepresentation?.unit)" (change)="onRangeChange(min.value, max.value, productFilterRepresentation)">
       </div>
     </ng-container>
 

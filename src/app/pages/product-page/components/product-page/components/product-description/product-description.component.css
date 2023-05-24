@@ -1,0 +1,8 @@
+table.product-description-table {
+  font-size: 0.9em;
+}
+
+table.product-description-table td {
+  padding: 3px 10px 3px 0;
+  color: var(--light-text-color);
+}
