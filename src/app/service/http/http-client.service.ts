@@ -19,6 +19,11 @@ export class HttpClientService {
     return this.http.get("/api/category/tree") as Observable<Category[]>
   }
 
+
+  public getCategoriesList(): Observable<Category[]>  {
+    return this.http.get("/api/category/list") as Observable<Category[]>
+  }
+
   public getProductListPage(productPageRequest: ProductListPageRequest): Observable<ProductListPage> {
     let params = new HttpParams();
     params = productPageRequest.filterExpression ?

@@ -1,27 +1,31 @@
-<div class="root-categories-wrapper">
-  <ul class="root-categories-list">
-    <a [routerLink]="'category/' + rootCategory.path"
-       *ngFor="let rootCategory of $categoriesTree | async"
-       (mouseenter)="onMouseEnter(rootCategory, $event)"
-       (mouseleave)="onMouseLeave(rootCategory, $event)"
-    >
-      <li class="root-categories-list-item">
-        <span class="name">{{rootCategory.name}}</span>
-      </li>
-    </a>
-  </ul>
-</div>
-<div class="child-categories-wrapper">
-  <ul class="child-categories-list">
-    <a [routerLink]="">
-      <li class="child-categories-list-item">
-        <span class="name">Посмотреть все</span>
-      </li>
-    </a>
-    <a [routerLink]="'category/' + childCategory?.path" *ngFor="let childCategory of ($selectedParentCategory | async)?.categories">
-      <li class="child-categories-list-item">
-        <span class="name">{{childCategory?.name}}</span>
-      </li>
-    </a>
-  </ul>
-</div>
+<ng-container *ngIf="(catalogService.$categoriesTree | async) as categoriesTree">
+  <div class="root-categories-wrapper">
+    <ul class="root-categories-list">
+      <a *ngFor="let rootCategory of categoriesTree"
+         (click)="onRouterLinkClick(rootCategory)"
+         (mouseenter)="onMouseEnter(rootCategory, $event)"
+         (mouseleave)="onMouseLeave(rootCategory, $event)"
+      >
+        <li class="root-categories-list-item">
+          <span class="name">{{rootCategory.name}}</span>
+        </li>
+      </a>
+    </ul>
+  </div>
+  <div class="child-categories-wrapper">
+    <ul class="child-categories-list">
+      <a [routerLink]="">
+        <li class="child-categories-list-item">
+          <span class="name">Посмотреть все</span>
+        </li>
+      </a>
+      <a (click)="onRouterLinkClick(childCategory)"
+         *ngFor="let childCategory of (catalogService.$selectedParentCategory | async).categories">
+        <li class="child-categories-list-item" [ngStyle]="{backgroundImage: 'url(' + '/api/images/C/' + childCategory?.image + ')'}">
+          <span class="name">{{childCategory?.name}}</span>
+        </li>
+      </a>
+    </ul>
+  </div>
+</ng-container>
+

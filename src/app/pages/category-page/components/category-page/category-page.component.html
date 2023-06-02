@@ -10,7 +10,7 @@
                            [productFilterRepresentations]="(categoryPageService.$productFiltersRepresentations | async)"
                            (onChange)="onFilterChangeEvent($event)"></app-product-filters>
     </div>
-    <div class="content">
+    <div id="pagination-and-product-wrapper" class="content">
       <app-pagination [userShowMore]="false"
                       [totalPages]="paginationService.totalPages | async"
                       [currentPage]="paginationService.getCurrentPage()"

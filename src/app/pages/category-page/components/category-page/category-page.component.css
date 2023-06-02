@@ -23,3 +23,12 @@ div.sidebar-content-mock {
   background-color: aliceblue;
   border-radius: 7px;
 }
+
+div#pagination-and-product-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+div#pagination-and-product-wrapper div.products-grid{
+  flex-grow: 1;
+}

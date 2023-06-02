@@ -102,4 +102,8 @@ export class CategoryPageService {
   public updateProductFilterValues(productFilterValues: ProductFiltersValues) {
     this.$productFiltersValues.next(productFilterValues);
   }
+
+  public clearProductList(): void {
+    this.$products.next([])
+  }
 }

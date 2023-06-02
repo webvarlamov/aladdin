@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClientService} from "../../../../service/http/http-client.service";
 import {
   BehaviorSubject,
@@ -16,6 +16,8 @@ import {
   timer
 } from "rxjs";
 import {Category} from "../../../../models/category";
+import {CatalogService} from "../../service/catalog.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-catalog',
@@ -23,26 +25,25 @@ import {Category} from "../../../../models/category";
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-  public $categoriesTree: Observable<Category[]>;
-  public $selectedParentCategory: BehaviorSubject<Category> = new BehaviorSubject<Category>(null);
-  public $selectedChildCategory: BehaviorSubject<Category> = new BehaviorSubject<Category>(null);
+  @Output()
+  public afterRouterLinkClickEvent: EventEmitter<void> = new EventEmitter<void>();
 
   public $mouseEnterEvent: BehaviorSubject<CategoryMouseEvent> = new BehaviorSubject<CategoryMouseEvent>(null);
   public $mouseLeaveEvent: BehaviorSubject<CategoryMouseEvent> = new BehaviorSubject<CategoryMouseEvent>(null);
 
-  constructor(private httpClientService: HttpClientService) {
-    this.$categoriesTree = this.httpClientService.getCategoriesTree().pipe(
-      tap(categories => this.$selectedParentCategory.next(categories[0]))
-    );
+  constructor(
+    public catalogService: CatalogService,
+    public router: Router
+  ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.$mouseEnterEvent.pipe(
       filter(event => event?.category != null),
       tap(event => {
-        this.$selectedParentCategory.next(event.category)
+        this.catalogService.setSelectedParentCategory(event.category)
       })
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   public onMouseEnter(category: Category, mouseEvent: MouseEvent) {
@@ -51,6 +52,13 @@ export class CatalogComponent implements OnInit {
 
   public onMouseLeave(category: Category, mouseEvent: MouseEvent) {
     this.$mouseLeaveEvent.next({category, mouseEvent});
+  }
+
+  public onRouterLinkClick(category: Category) {
+    this.router.navigate(['category/' + category.path]).then(event => {
+      console.log(event)
+      this.afterRouterLinkClickEvent.emit()
+    })
   }
 }
 

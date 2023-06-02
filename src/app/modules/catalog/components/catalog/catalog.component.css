@@ -89,6 +89,12 @@ ul.child-categories-list a li.child-categories-list-item {
   height: 100%;
   border-radius: 7px;
   padding: 15px;
+  cursor: pointer;
+  border: 1px solid var(--no-accent-color);
+}
+
+ul.child-categories-list a li.child-categories-list-item:hover {
+
 }
 
 ul.child-categories-list a li.child-categories-list-item span.name {

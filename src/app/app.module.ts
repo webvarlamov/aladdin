@@ -7,6 +7,7 @@ import {CommonSiteModule} from "./modules/common/common-site.module";
 import {HeaderModule} from "./modules/header/header.module";
 import {CatalogModule} from "./modules/catalog/catalog.module";
 import {FooterModule} from "./modules/footer/footer.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FooterModule} from "./modules/footer/footer.module";
     CommonSiteModule,
     HeaderModule,
     CatalogModule,
-    FooterModule
+    FooterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

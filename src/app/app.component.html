@@ -1,17 +1,20 @@
-<app-section class="header-section">
-  <app-content>
-    <br>
-    <app-header (onCatalogButtonClickEvent)="showCatalog = !showCatalog"></app-header>
-  </app-content>
-</app-section>
-<app-section class="catalog-section" *ngIf="showCatalog || true">
-  <app-content>
-    <app-catalog></app-catalog>
-  </app-content>
-</app-section>
-<router-outlet></router-outlet>
-<app-section class="footer-section">
-  <app-content>
-    <app-footer></app-footer>
-  </app-content>
-</app-section>
+<ng-container *ngIf="ready">
+  <app-section class="header-section">
+    <app-content>
+      <br>
+      <app-header (onCatalogButtonClickEvent)="expand()"></app-header>
+    </app-content>
+  </app-section>
+  <app-section class="catalog-section" [@expandedPanel]="state">
+    <app-content>
+      <app-catalog (afterRouterLinkClickEvent)="afterRouterLinkClick()"></app-catalog>
+    </app-content>
+  </app-section>
+  <router-outlet></router-outlet>
+  <app-section class="footer-section">
+    <app-content>
+      <app-footer></app-footer>
+    </app-content>
+  </app-section>
+</ng-container>
+
